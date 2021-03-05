@@ -1,1 +1,1 @@
-# banking-system
+# System bankowy
