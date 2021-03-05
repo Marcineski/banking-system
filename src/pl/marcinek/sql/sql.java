@@ -34,6 +34,7 @@ public class sql {
         preparedStmt.setString(6, Authenticator.authenticator());
         preparedStmt.setString(7, Register.type);
         preparedStmt.executeUpdate();
+        conn.close();
     }
 
     public static void newid() throws SQLException, ClassNotFoundException{
@@ -46,40 +47,47 @@ public class sql {
             System.out.println("ID twojego konta to :" + id);
         }
         st.executeQuery(query);
+        conn.close();
     }
 
     public static void balance() throws SQLException, ClassNotFoundException {
         sql.sql();
-        String query = "SELECT balance FROM accounts WHERE authcode = " + Login.authcode;
+        String query = "SELECT * FROM accounts WHERE authcode = " + Login.authcode;
         ResultSet rs = st.executeQuery(query);
 
         while (rs.next()) {
             balance = rs.getString("balance");
+            System.out.println("Stan konta: " + balance);
         }
+        conn.close();
     }
 
     public static void changename() throws SQLException, ClassNotFoundException {
         sql.sql();
         String query = "UPDATE accounts SET name = '"+ ChangeName.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
 
     public static void changepassword() throws SQLException, ClassNotFoundException {
         sql.sql();
         String query = "UPDATE accounts SET password = '"+ ChangePassword.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
 
     public static void changesurname() throws SQLException, ClassNotFoundException{
         sql.sql();
         String query = "UPDATE accounts SET surname = '"+ ChangeSurname.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
 
     public static void changeusername() throws SQLException, ClassNotFoundException {
         sql.sql();
         String query = "UPDATE accounts SET username = '"+ ChangeUsername.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
 
     public static void deleteaccount() throws SQLException, ClassNotFoundException {
@@ -87,27 +95,31 @@ public class sql {
         PreparedStatement st = conn.prepareStatement("DELETE FROM accounts WHERE authcode = " + Login.authcode + ";");
         st.executeUpdate();
         System.out.println("Konto usuniete!");
+        conn.close();
     }
 
     public static void deposit() throws SQLException, ClassNotFoundException{
         sql.sql();
         String query = "UPDATE accounts SET balance = balance + '"+ Deposit.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
 
     public static void sendmoney() throws SQLException, ClassNotFoundException{
         sql.sql();
         String query = "UPDATE accounts SET balance = balance + '"+ SendMoney.odp +"' WHERE authcode = " + SendMoney.authcode; //odbiornik
         String query1= "UPDATE accounts SET balance = balance - '"+ SendMoney.odp +"' WHERE authcode = " + Login.authcode; //wysylajacy
-        st.executeUpdate(query);
-        st.executeUpdate(query1);
+        st.executeUpdate(query + query1);
+        conn.close();
     }
 
     public static void withdraw() throws SQLException, ClassNotFoundException {
         sql.sql();
         String query = "UPDATE accounts SET balance = balance - '"+ Withdraw.odp +"' WHERE authcode = " + Login.authcode;
         st.executeUpdate(query);
+        conn.close();
     }
+
     //ADMIN
     public static void admindeleteuser() throws SQLException, ClassNotFoundException {
         sql.sql();
@@ -116,12 +128,14 @@ public class sql {
         preparedStmt.setInt(1, DeleteUser.id);
         preparedStmt.execute();
         System.out.println("Usunieto uzytkownika z id: " + DeleteUser.id);
+        conn.close();
     }
 
     public static void admindeleteallusers() throws SQLException, ClassNotFoundException{
         sql.sql();
         PreparedStatement pre = conn.prepareStatement("DELETE FROM accounts");
         pre.executeUpdate();
+        conn.close();
     }
 
     public static void adminshowall() throws SQLException, ClassNotFoundException{
@@ -143,39 +157,40 @@ public class sql {
             System.out.println(" ");
         }
         st.executeQuery(query);
+        conn.close();
     }
 
     public static void updateuser1() throws SQLException, ClassNotFoundException{
         sql.sql();
-        String query = "UPDATE accounts SET username = '"+ UpdateUser.odp1 +"' WHERE authcode = " + Login.authcode;
+        String query = "UPDATE accounts SET username = '"+ UpdateUser.odp1 +"' WHERE authcode = " + UpdateUser.id;
         st.executeUpdate(query);
         conn.close();
     }
 
     public static void updateuser2() throws SQLException, ClassNotFoundException {
         sql.sql();
-        String query = "UPDATE accounts SET password = '"+ UpdateUser.odp2 +"' WHERE authcode = " + Login.authcode;
+        String query = "UPDATE accounts SET password = '"+ UpdateUser.odp2 +"' WHERE id = " + UpdateUser.id;
         st.executeUpdate(query);
         conn.close();
     }
 
     public static void updateuser3() throws SQLException, ClassNotFoundException{
         sql.sql();
-        String query = "UPDATE accounts SET name = '"+ UpdateUser.odp3 +"' WHERE id = " + Login.authcode;
+        String query = "UPDATE accounts SET name = '"+ UpdateUser.odp3 +"' WHERE id = " + UpdateUser.id;
         st.executeUpdate(query);
         conn.close();
     }
 
     public static void updateuser4() throws SQLException, ClassNotFoundException{
         sql.sql();
-        String query = "UPDATE accounts SET surname = '"+ UpdateUser.odp4 +"' WHERE id = " + Login.authcode;
+        String query = "UPDATE accounts SET surname = '"+ UpdateUser.odp4 +"' WHERE id = " + UpdateUser.id;
         st.executeUpdate(query);
         conn.close();
     }
 
     public static void updateuser5() throws SQLException, ClassNotFoundException{
         sql.sql();
-        String query = "UPDATE accounts SET balance = '"+ UpdateUser.odp5 +"' WHERE id = " + Login.authcode;
+        String query = "UPDATE accounts SET balance = '"+ UpdateUser.odp5 +"' WHERE id = " + UpdateUser.id;
         st.executeUpdate(query);
         conn.close();
     }

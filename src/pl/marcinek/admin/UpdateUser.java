@@ -24,7 +24,7 @@ public class UpdateUser {
         System.out.println("3: Imie");
         System.out.println("4: Nazwisko");
         System.out.println("5: Stan konta");
-        System.out.println("6: Wszyscy uzytkownicy bazy danych");
+        System.out.println("6: Pokasz wszystkich uzytkownikow bazy danych");
         String odp = scanner.nextLine();
 
         Scanner scan = new Scanner(System.in);

@@ -12,8 +12,8 @@ public class Admin {
 
         System.out.println("1: Pokaz wszystkich uzytkownikow");
         System.out.println("2: Usun wybranego uzytkownika");
-        System.out.println("3: Aktualizuj konto uzytkownikow");
-        System.out.println("4: Usun wszystkich uzytkownikow");
+        System.out.println("3: Aktualizuj konto uzytkownika");
+        System.out.println("4: Usun wszystkich uzytkownika");
         String scan = scaner.nextLine();
         System.out.println("Wybrales: " + scan);
 

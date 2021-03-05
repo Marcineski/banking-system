@@ -1,12 +1,10 @@
 package pl.marcinek.accounts;
 
 import pl.marcinek.sql.sql;
-
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class ChangeName {
-
     public static String odp;
 
     public static void changename() throws SQLException, ClassNotFoundException {

@@ -1,7 +1,6 @@
 package pl.marcinek.admin;
 
 import pl.marcinek.sql.sql;
-
 import java.sql.SQLException;
 import java.util.Scanner;
 

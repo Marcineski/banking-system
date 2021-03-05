@@ -27,7 +27,6 @@ public class Login {
         String query = "SELECT * from accounts";
         st = conn.createStatement();
         ResultSet rs = st.executeQuery(query);
-        preparedStmt = conn.prepareStatement(query);
         int x = 0;
         while(rs.next()){
             if ((rs.getString("username").equals(login)) && rs.getString("password").equals(password) && rs.getString("authcode").equals(authcode)) {

@@ -11,8 +11,6 @@ public class ChangeSurname {
         Scanner scan1 = new Scanner(System.in);
         System.out.println("Podaj nowe imie");
         odp = scan1.nextLine();
-
         sql.changesurname();
-
     }
 }
