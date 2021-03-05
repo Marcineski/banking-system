@@ -8,17 +8,21 @@ import java.util.Scanner;
 public class AccountManager {
     public static void accoutmanager() throws SQLException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Wybierz opcje bankowa");
-        System.out.println("1: Pokasz stan konta");
-        System.out.println("2: Przelej pieniadze innemu uzytkownikowi banku");
-        System.out.println("3: Wyplac pieniadze");
-        System.out.println("4: Wplac pieniadze");
-        System.out.println("5: Usun konto");
-        System.out.println("6: Zmien nazwe uzytkownika");
-        System.out.println("7: Zmien haslo");
-        System.out.println("8: Zmien imie");
-        System.out.println("9: Zmien nazwisko");
-
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add("1: Pokasz stan konta");
+        lista.add("2: Przelej pieniadze innemu uzytkownikowi banku");
+        lista.add("3: Wyplac pieniadze");
+        lista.add("4: Wplac pieniadze");
+        lista.add("5: Usun konto");
+        lista.add("6: Zmien nazwe uzytkownika");
+        lista.add("7: Zmien haslo");
+        lista.add("8: Zmien imie");
+        lista.add("9: Zmien nazwisko");
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));
+        }
         String scan = scanner.nextLine();
 
         if(scan.equals("1")){
@@ -51,3 +55,4 @@ public class AccountManager {
 
     }
 }
+
