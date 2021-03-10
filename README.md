@@ -9,3 +9,4 @@ Lub wbij na tsa: Alkers.pl
 ### Do zrobienia
 - [ ] usunąć zbędny kod
 - [ ] więcej funkcji
+- [ ] config
